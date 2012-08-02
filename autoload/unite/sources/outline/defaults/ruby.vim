@@ -100,7 +100,7 @@ function! s:outline_info.create_heading(which, heading_line, matched_line, conte
         " Eigen-class
       else
         " Module, Class
-        let word = matchstr(word, '^\s*\%(module\|class\)\s\+\zs\h\w*') . ' : ' . keyword
+        let word = substitute(matchstr(word, '^\s*\%(module\|class\)\s\+\zs\h\%(\w\|\s*::\s*\)*'),'\s*','','g') . ' : ' . keyword
       endif
     elseif keyword == 'protected' || keyword == 'private'
       " Accessibility
