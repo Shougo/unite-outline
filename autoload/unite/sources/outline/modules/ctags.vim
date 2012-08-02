@@ -37,7 +37,7 @@ endfunction
 
 let s:Tree  = unite#sources#outline#import('Tree')
 let s:Util  = unite#sources#outline#import('Util')
-let s:Vital = vital#of('unite')
+let s:Vital = vital#of('unite.vim')
 
 function! s:get_SID()
   return matchstr(expand('<sfile>'), '<SNR>\d\+_')
