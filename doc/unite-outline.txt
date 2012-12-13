@@ -708,6 +708,7 @@ SYNTAX HIGHLIGHTING ~
 		      \     'pattern'  : '/\S\+\ze\s*(/' },
 		      \   { 'name'     : 'parameter_list',
 		      \     'pattern'  : '/(.*)/' },
+		      \ ],
 		      \}
 <
 		If "highlight" attribute is omitted, the highlight specified

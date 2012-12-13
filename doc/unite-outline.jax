@@ -383,7 +383,7 @@ EXTRACTING HEADINGS BY CALLBACK ~
 		これらは、見出し抽出時のパターンマッチングの速度を最大限に上げ
 		るためにもうけられている制約です。見出しの抽出に後方参照が必要
 		な場合は、 heading-1, heading, heading+1 には後方参照のない緩
-		めのパターンを設定し、マッチ後の create_heading()関数にて再度、
+		めのパターンを設定し、マッチ後の create_heading() 関数にて再度、
 		後方参照を用いた厳密なマッチングを行うといった方法で対処して下
 		さい。
 					*unite-outline-info-heading+1*
@@ -416,7 +416,7 @@ EXTRACTING HEADINGS BY CALLBACK ~
 		この関数を定義することで、見出し一覧に設定する文字列の整形、お
 		よび見出しレベル（インデント）の設定が行えます。
 
-		create_heading()関数に渡される引数は以下の通りです。
+		create_heading() 関数に渡される引数は以下の通りです。
 
 		* {which}		文字列
 					マッチの種類
@@ -671,6 +671,7 @@ SYNTAX HIGHLIGHTING ~
 		      \     'pattern'  : '/\S\+\ze\s*(/' },
 		      \   { 'name'     : 'parameter_list',
 		      \     'pattern'  : '/(.*)/' },
+		      \ ],
 		      \}
 <
 		highlight属性は省略でき、その場合は
