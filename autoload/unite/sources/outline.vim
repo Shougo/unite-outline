@@ -1135,7 +1135,7 @@ function! s:skip_while(pattern, from)
 endfunction
 
 function! s:skip_until(pattern, from)
-  let lnum = a:from + 1 | let num_lines = line('$')
+  let lnum = a:from | let num_lines = line('$')
   while lnum <= num_lines
     let line = getline(lnum)
     let lnum += 1
