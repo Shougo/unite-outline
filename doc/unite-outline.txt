@@ -40,7 +40,7 @@ CONTENTS				*unite-outline-contents*
 	  Utility Functions	  |unite-outline-utility-functions|
 	ToDo			|unite-outline-todo|
 	Known Issues		|unite-outline-known-issues|
-	ChanheLog		|unite-outline-changelog|
+	ChangeLog		|unite-outline-changelog|
 
 ==============================================================================
 INTRODUCTION				*unite-outline-introduction*
@@ -920,7 +920,7 @@ INCORRECT STRUCTURED TREE ~
 	ones.
 
 ==============================================================================
-CHANHELOG				*unite-outline-changelog*
+CHANGELOG				*unite-outline-changelog*
 
 0.5.1	2011-11-01
 
