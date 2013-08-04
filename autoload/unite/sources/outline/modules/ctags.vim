@@ -119,7 +119,7 @@ function! s:execute_ctags(context)
   let filetype = a:context.buffer.filetype
   " Assemble the command-line.
   let lang_info = s:Ctags.lang_info[filetype]
-  let opts  = ' -f - --excmd=number --fields=afiKmsSzt --sort=no '
+  let opts  = ' -f - --excmd=number --fields=afiKmsSzt --sort=no --append=no'
   let opts .= ' --language-force=' . lang_info.name . ' '
   let opts .= lang_info.ctags_options
 
@@ -132,14 +132,14 @@ function! s:execute_ctags(context)
   let ctags_out = unite#util#system(cmdline)
   let status = unite#util#get_last_status()
   if status != 0
-    call unite#util#print_message(
+    call unite#print_message(
           \ "[unite-outline] ctags failed with status " . status . ".")
     return []
   endif
 
   " Delete the used temporary file.
   if delete(temp_file) != 0
-    call unite#util#print_error(
+    call unite#print_error(
           \ "unite-outline: Couldn't delete a temporary file: " . temp_file)
   endif
 
