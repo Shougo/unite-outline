@@ -51,6 +51,8 @@ let s:OUTLINE_ALIASES = {
 
 let s:OUTLINE_CACHE_DIR = g:unite_data_directory . '/outline'
 
+let s:supported_arguments = [ 'filetype', 'folding', 'update' ]
+
 " Rename the cache directory if its name is still old, dotted style name.
 " See http://d.hatena.ne.jp/tyru/20110824/unite_file_mru
 "
@@ -642,6 +644,10 @@ function! s:Source_gather_candidates(source_args, unite_context)
   endtry
 endfunction
 let s:source.gather_candidates = function(s:SID . 'Source_gather_candidates')
+
+function! s:source.complete(args, context, arglead, cmdline, cursorpos) "{{{
+	return s:supported_arguments
+endfunction"}}}
 
 function! s:parse_source_arguments(source_args, unite_context)
   let options = {
