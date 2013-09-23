@@ -22,7 +22,7 @@ let s:Util = unite#sources#outline#import('Util')
 
 let s:outline_info = {
       \ 'heading-1': s:Util.shared_pattern('sh', 'heading-1'),
-      \ 'heading'  : '^\%(\s*\%(sub\s\+\h\|\%(package\|BEGIN\|CHECK\|INIT\|END\)\>\)\|__\%(DATA\|END\)__$\)',
+      \ 'heading'  : '^\%(\s*\%(sub\s\+\h\|subtest\s\+["'']\?\h\|\%(package\|BEGIN\|CHECK\|INIT\|END\)\>\)\|__\%(DATA\|END\)__$\)',
       \
       \ 'skip': {
       \   'header': s:Util.shared_pattern('sh', 'header'),
@@ -35,6 +35,9 @@ let s:outline_info = {
       \   { 'name'     : 'sub',
       \     'pattern'  : '/\h\w*/',
       \     'highlight': unite#sources#outline#get_highlight('function') },
+      \   { 'name'     : 'subtest',
+      \     'pattern'  : '/\h\w*/',
+      \     'highlight': unite#sources#outline#get_highlight('normal') },
       \   { 'name'     : 'block',
       \     'pattern'  : '/\<\%(BEGIN\|CHECK\|INIT\|END\|__\%(DATA\|END\)__\)\>/',
       \     'highlight': unite#sources#outline#get_highlight('special') },
@@ -66,6 +69,7 @@ function! s:outline_info.create_heading(which, heading_line, matched_line, conte
       let heading.word = substitute(heading.word, ';\s*$', '', '')
       let heading.word = substitute(heading.word, '^\s*\zspackage\s\+', '', '') . ' : package'
     else
+      let heading.word = substitute(heading.word, '\<subtest\>\s*q\?[''"]\(.*\)[''"]\s.*$', '\1 : subtest', '')
       let heading.word = substitute(heading.word, '\<sub\>', '', '')
       let heading.word = substitute(heading.word, '\s*{.*$', '', '')
       let heading.level += 1
