@@ -39,18 +39,12 @@ endfunction
 
 "-----------------------------------------------------------------------------
 
-function! s:get_SID() abort
-  return matchstr(expand('<sfile>'), '<SNR>\d\+_')
-endfunction
-let s:SID = s:get_SID()
-delfunction s:get_SID
-
 let s:Module = {}
 
 function! s:Module_bind(func_name) dict
   let self[a:func_name] = function(self.__prefix__  . a:func_name)
 endfunction
-let s:Module.__bind__ = function(s:SID . 'Module_bind')
+let s:Module.__bind__ = function('s:Module_bind')
 let s:Module.function = s:Module.__bind__ | " syntax sugar
 
 let &cpo = s:save_cpo
