@@ -93,7 +93,7 @@ let s:Ctags.lang_info = {}
 function! s:Ctags_exists() abort
   return !empty(s:Ctags.exe)
 endfunction
-call s:Ctags.function('exists')
+let s:Ctags.exists = function('s:Ctags_exists')
 
 " Returns True if the Exuberant Ctags supports {filetype}.
 "
@@ -106,7 +106,7 @@ function! s:Ctags_supports(filetype) abort
     return index(split(ctags_out, "\<NL>"), lang_info.name, 1) >= 0
   endif
 endfunction
-call s:Ctags.function('supports')
+let s:Ctags.supports = function('s:Ctags_supports')
 
 " Executes the Ctags and returns a List of tag objects.
 "
@@ -288,7 +288,7 @@ function! s:Ctags_extract_headings(context) abort
   endif
   return root
 endfunction
-call s:Ctags.function('extract_headings')
+let s:Ctags.extract_headings = function('s:Ctags_extract_headings')
 
 " Creates a heading from {tag}.
 "
